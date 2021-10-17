@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="./index.js"></script>
+    <title>Banking Web App</title>
+    <link rel="stylesheet" href="./Assets/CSS/index.css" />
+  </head>
+
+  <body data-spy="scroll">
+    <nav>
+      <div>
+        <h5>Foundation Bank</h5>
+      </div>
+      <div id="nav_links">
+        <p><a href="#cust_tab">Customers</a></p>
+        <p onclick="show_transfer_table()">Transfers</p>
+      </div>
+    </nav>
+
+
+
+    <section id="home">
+
+      <div class="row landing">
+        <div class="col-lg-6">
+          <div class="img_container">
+            <img
+              src="./Assets/Pics/Piggy bank_Monochromatic.png"
+              alt=""
+              srcset=""
+            />
+            <p id="landing_header">
+              Your Flexibility, <br />
+              Our Excellence
+            </p>
+            <p id="landing_text">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni
+              rem excepturi recusandae reprehenderit ex consequuntur optio
+              fugit! Sit tempora harum quidem, quibusdam magni, exercitationem
+              similique temporibus modi, porro non enim!
+            </p>
+
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div>
+            <button onclick="show_transfer_table()" class="btn_div">
+              <i class="fas fa-money-check-alt icons"></i> Transfer Table
+            </button>
+            <button onclick="show_customer_table()" class="btn_div">
+              <i class="fas fa-users icons"></i> Customer Table
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="cust_tab">
+      <div class="customer_table_container">
+        <center><h1>Customer Table</h1></center>
+        <table id="customer_table">
+          <thead>
+            <tr class="table_head transfer_tr">
+              <th>Account Number</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Current Balance (₹)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="transfer_table_container">
+      <span class="cross" onclick="close_transfer_table_container()"
+        >&times</span
+      >
+      <div>
+        <center><h1>Transfer Table</h1></center>
+        <table id="transfer_table">
+          <thead>
+            <tr class="table_head transfer_tr">
+              <th>From</th>
+              <th>Sender Account Number</th>
+              <th>To</th>
+              <th>Recipent Account Number</th>
+              <th>Amount (₹)</th>
+            </tr>
+          </thead>
+          <tbody id="transfer_tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="details">
+      <span class="cross" onclick="close_detail_container()">&times</span>
+      <div class="row details_div">
+        <div class="col-md-6">
+          <label for="">Account Holder</label>
+          <h2 id="set_name"></h2>
+          <label for="">Account Number</label>
+          <h3 id="set_account_number"></h3>
+          <label for="">Email</label>
+          <h3 id="set_email"></h3>
+          <label for="">Balance</label>
+          <h3 id="set_current_balance"></h3>
+        </div>
+        <div class="col-md-6">
+          <label for="">Address</label>
+          <h2 id="set_address"></h2>
+          <label for="">City</label>
+          <h3 id="set_city"></h3>
+          <label for="">Branch</label>
+          <h3 id="set_branch"></h3>
+          <label for="">Contact</label>
+          <h3 id="set_contact"></h3>
+        </div>
+        <button
+          class="btn btn-primary"
+          id="transfer_btn"
+          onclick="show_transfer_div()"
+        >
+          Transfer Money
+        </button>
+      </div>
+    </div>
+
+    <div id="transfer_div">
+      <div>
+        <span class="cross" onclick="close_transfer_div()">&times</span>
+        <label for=""> Enter recipent's account number </label><br />
+        <input
+          type="number"
+          name=""
+          class="ip"
+          id="recipent_accno"
+          inputmode="numeric"
+          placeholder="Account Number"
+        /><br />
+        <label for="">Enter the amount (₹)</label><br />
+        <input
+          type="number"
+          name=""
+          class="ip"
+          id="transfer_amt"
+          inputmode="numeric"
+          placeholder="Amount"
+        /><br />
+        <button class="btn btn-success" onclick="transfer()">
+          Complete Transaction
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
