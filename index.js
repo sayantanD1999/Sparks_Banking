@@ -114,7 +114,7 @@ function update_customer_table(
     }
     if (row.cells[0].innerHTML == recipent_accno) {
       row.cells[3].innerHTML =
-        "₹ " + parseFloat(row.cells[3].innerHTML) + parseFloat(transfer_amt);
+        "₹ " + (parseFloat(row.cells[3].innerHTML.split(" ")[1]) + parseFloat(transfer_amt));
     }
   }
 }
@@ -149,13 +149,15 @@ function update_transfer_table(
 }
 function transfer() {
   var recipent_name, sender_name;
-  var curr_balance = document.getElementById("set_current_balance").innerHTML;
-  var transfer_amt = document.getElementById("transfer_amt").value;
-  console.log(transfer_amt, curr_balance);
+  var x = document.getElementById("set_current_balance").innerHTML.split(" ")[1];
+  var y = document.getElementById("transfer_amt").value;
+  var curr_balance = parseInt(x);
+  var transfer_amt = parseInt(y);
   if (transfer_amt <= curr_balance) {
     let sender_accno = document.getElementById("set_account_number").innerHTML;
     let recipent_accno = document.getElementById("recipent_accno").value;
-    let sender_new_balance = curr_balance - transfer_amt;
+    let sender_new_balance = curr_balance-transfer_amt;
+    console.log(sender_new_balance);
     document.getElementById("set_current_balance").innerHTML =
       "₹ " + sender_new_balance;
 
