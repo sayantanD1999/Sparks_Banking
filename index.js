@@ -149,11 +149,9 @@ function update_transfer_table(
 }
 function transfer() {
   var recipent_name, sender_name;
-
-  var curr_balance = parseFloat(
-    document.getElementById("set_current_balance").innerHTML
-  );
+  var curr_balance = document.getElementById("set_current_balance").innerHTML;
   var transfer_amt = document.getElementById("transfer_amt").value;
+  console.log(transfer_amt, curr_balance);
   if (transfer_amt <= curr_balance) {
     let sender_accno = document.getElementById("set_account_number").innerHTML;
     let recipent_accno = document.getElementById("recipent_accno").value;
@@ -199,6 +197,9 @@ function transfer() {
       sender_name,
       recipent_name
     );
+
+    alert("Transaction Complete");
+    close_transfer_div();
   } else {
     alert("Not enough balance available or incorrect account number");
   }
